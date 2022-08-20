@@ -1,0 +1,15 @@
+framework:
+    messenger:
+        failure_transport: failed
+        transports:
+            # https://symfony.com/doc/current/messenger.html#transport-configuration
+            async:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+            failed: '%env(MESSENGER_TRANSPORT_FAILED_DSN)%'
+            sync: 'sync://'
+
+        routing:
+            'App\Application\Write\OpenTab': async
+            'App\Application\Write\CloseTab': async
+            # Route your messages to the transports
+            # 'App\Message\YourMessage': async

@@ -1,0 +1,56 @@
+## The namespace for your generated code.
+namespace: App\Tab
+
+## Custom type serialization (optional)
+types:
+  uuid:
+    type: Ramsey\Uuid\UuidInterface
+    serializer: |
+      {param}->toString()
+    deserializer: |
+      \Ramsey\Uuid\Uuid::fromString({param})
+
+## The commands (optional)
+commands:
+  OpenTab:
+    fields:
+      tabId: uuid
+      table:
+        type: string
+        example: 12
+      name:
+        type: string
+        example: John Doe
+      waiter:
+        type: string
+        example: John Doe
+  CloseTab:
+    fields:
+      tabId: uuid
+      amountPaid:
+        type: int
+        example: 1000
+
+## The events
+events:
+  TabOpened:
+    fields:
+      tabId: uuid
+      table:
+        type: string
+        example: 223-423-423-42
+      waiter:
+        type: string
+        examle: John Doe
+  TabClosed:
+    fields:
+      tabId: uuid
+      amountPaid:
+        type: int
+        example: 1011
+      tabTotalValue:
+        type: int
+        example: 1011
+      tip:
+        type: int
+        example: 1011

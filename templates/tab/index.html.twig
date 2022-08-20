@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Open tabs</h1>
+    <a href="{{ path('tab:open') }}" class="btn btn-primary">Open new tab</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Table</th>
+                <th scope="col">Waiter</th>
+                <th scope="col">Name</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tab in openTabs %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ tab.table_number }}</td>
+                    <td>{{ tab.waiter }}</td>
+                    <td></td>
+                    <td><a href="{{ path('tab:close', {'id': tab.tab_id}) }}" class="btn btn-danger btn-sm">Close</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
